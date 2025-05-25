@@ -38,6 +38,8 @@
                 <th>Quantity</th>
                 <th>Price</th>
                 <th>Discount</th>
+                <th>detals </th>
+                <th>Delete </th>
             </tr>
         </thead>
         <tbody>
@@ -50,10 +52,9 @@
                     <td>@item.Cuntity</td>
                     <td>@item.Price</td>
                     <td>@item.Discount</td>
-                 
-                        <td>
-                            <a href="/Product/Details/@item.Id">Details</a>
-                        </td>
+                    <td><a href="/Product/Details/@item.Id">Details</a> </td>
+                    <td><a href="/Product/Delete/@item.Id">Delete</a></td>
+                        
                 </tr>
             }
         </tbody>

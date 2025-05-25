@@ -42,5 +42,16 @@ namespace Task1_mvc.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public RedirectToActionResult Delete(int id)
+        {
+            var prodact = context.Products.FirstOrDefault(e => e.Id == id);
+            if (prodact == null)
+            { return RedirectToAction("Index"); }
+            context.Products.Remove(prodact);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
     }
 }
