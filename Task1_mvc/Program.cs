@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Task1_mvc.DataBase;
+
 namespace Task1_mvc
 {
     public class Program
@@ -5,12 +8,13 @@ namespace Task1_mvc
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var connect = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<ApplicationDbContext>(op => op.UseSqlServer(connect));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
-
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {

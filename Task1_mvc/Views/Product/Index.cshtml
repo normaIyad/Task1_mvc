@@ -1,14 +1,63 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<Task1_mvc.Models.Product>
+
 <html>
-    <head><title></title></head>
-    <body>
-       <h2>
-           index 
-       </h2>
-       <a href="#"></a>
-    </body>
+<head>
+    <a href="/Product/Create">Create New Product</a>
+    <title>Product List</title>
+    <style>
+        table {
+        border-collapse: collapse;
+        width: 80%;
+        }
+
+        th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        }
+
+        th {
+        background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h2>Product List</h2>
+    <a href="/Product/Create">Create New Product</a>
+    <br />
+    <br />
+    @if (!Model.Any())
+    {
+        <p>no prodacts </p>
+    }else{
+  <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Discount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Category</td>
+                    <td>@item.Cuntity</td>
+                    <td>@item.Price</td>
+                    <td>@item.Discount</td>
+                 
+                        <td>
+                            <a href="/Product/Details/@item.Id">Details</a>
+                        </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    }
+</body>
 </html>
